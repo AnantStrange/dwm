@@ -11,8 +11,9 @@ all: options dwm
 options:
 	@echo dwm build options:
 	@echo "CFLAGS   = ${CFLAGS}"
+	@echo -e "\n"
 	@echo "LDFLAGS  = ${LDFLAGS}"
-	@echo "CC       = ${CC}"
+	@echo -e "\n"
 
 .c.o:
 	${CC} -c ${CFLAGS} $<
@@ -20,14 +21,14 @@ options:
 ${OBJ}: config.h config.mk
 
 dwm: ${OBJ}
-	${CC} -o $@ ${OBJ} -O3 ${LDFLAGS}
+	${CC} -o $@ ${OBJ} ${LDFLAGS}
 
 clean:
 	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz *.orig *.rej
 
 dist: clean
 	mkdir -p dwm-${VERSION}
-	cp -R LICENSE Makefile README config.mk\
+	cp -R Makefile config.mk\
 		dwm.1 drw.h util.h ${SRC} transient.c dwm-${VERSION}
 	tar -cf dwm-${VERSION}.tar dwm-${VERSION}
 	gzip dwm-${VERSION}.tar

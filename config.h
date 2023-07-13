@@ -5,7 +5,7 @@ static unsigned int gappih = 20;  /* horiz inner gap between windows */
 static unsigned int gappiv = 10;  /* vert inner gap between windows */
 static unsigned int gappoh = 8;	  /* horiz outer gap between windows and screen edge */
 static unsigned int gappov = 20;  /* vert outer gap between windows and screen edge */
-static int swallowfloating = 1;	  /* 1 means swallow floating windows by default */
+static int swallowfloating = 0;	  /* 1 means swallow floating windows by default */
 static int smartgaps = 0;		  /* 1 means no outer gap when there is only one window */
 static int showbar = 1;			  /* 0 means no bar */
 static int topbar = 1;			  /* 0 means bottom bar */
@@ -28,9 +28,14 @@ typedef struct
 	const void *cmd;
 } Sp;
 const char *spcmd1[] = {"tabbed", "-g", "1000x700", "-cr", "2", "-n", "spterm", "st", "-w", "", NULL};
+const char *spcmd2[] = {"st","-g","120x30","-n","spaudio","-e","pavucontrol", NULL};
+const char *spcmd3[] = {"st","-g","150x40","-n","sptorrent","-e","transmission-remote-gtk", NULL};
 static Sp scratchpads[] = {
 	/* name          cmd  */
-	{"spterm", spcmd1}};
+	{"spterm", spcmd1},
+	{"spaudio",spcmd2},
+	{"sptorrent",spcmd3},
+};
 
 /* tagging */
 static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7"};
@@ -41,7 +46,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class    instance      title       	 tags mask    isfloating   isterminal  noswallow  monitor */
-	{NULL, "spterm", NULL, SPTAG(0), 1, 1, 0, -1},
+	{NULL, "spterm", NULL, SPTAG(0), 1, 0, 1, -1},
+	{NULL, "spaudio", NULL, SPTAG(1), 1, 1, 0, -1},
+	{NULL, "sptorrent", NULL, SPTAG(2), 1, 1, 0, -1},
 };
 
 /* layout(s) */
@@ -155,12 +162,14 @@ static const Key keys[] = {
 	{MODKEY, XK_l, setmfact, {.f = +0.05}},
 
 	{MODKEY, XK_space, togglescratch, {.ui = 0}},
+	{MODKEY, XK_a, togglescratch, {.ui = 1}},
+	{ControlMask, XK_t, togglescratch, {.ui = 2}},
 
 	{MODKEY, XK_b, togglebar, {0}},
 	{MODKEY, XK_Return, zoom, {0}},
 
 
-	{MODKEY, XK_a, defaultgaps, {0}},
+	{MODKEY, XK_g, defaultgaps, {0}},
 	{MODKEY,				XK_equal,	incrgaps,       {.i = +2 } }, 
 	{MODKEY,				XK_minus,	incrgaps,       {.i = -2 } }, 
 

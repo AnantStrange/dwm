@@ -480,6 +480,8 @@ void
 arrangemon(Monitor *m)
 {
 	strncpy(m->ltsymbol, m->lt[m->sellt]->symbol, sizeof m->ltsymbol);
+    m->ltsymbol[15] = '\0';
+
 	if (m->lt[m->sellt]->arrange)
 		m->lt[m->sellt]->arrange(m);
 }
@@ -1809,6 +1811,8 @@ setlayout(const Arg *arg)
 	if (arg && arg->v)
 		selmon->lt[selmon->sellt] = selmon->pertag->ltidxs[selmon->pertag->curtag][selmon->sellt] = (Layout *)arg->v;
 	strncpy(selmon->ltsymbol, selmon->lt[selmon->sellt]->symbol, sizeof selmon->ltsymbol);
+        selmon->ltsymbol[15] = '\0';
+
 	if (selmon->sel)
 		arrange(selmon);
 	else
