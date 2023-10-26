@@ -1,3 +1,13 @@
+/* alt-tab configuration */
+static const unsigned int tabModKey 		= 0x40;	/* if this key is hold the alt-tab functionality stays acitve. This key must be the same as key that is used to active functin altTabStart `*/
+static const unsigned int tabCycleKey 		= 0x17;	/* if this key is hit the alt-tab program moves one position forward in clients stack. This key must be the same as key that is used to active functin altTabStart */
+static const unsigned int tabPosY 			= 0;	/* tab position on Y axis, 0 = bottom, 1 = center, 2 = top */
+static const unsigned int tabPosX 			= 2;	/* tab position on X axis, 0 = left, 1 = center, 2 = right */
+static const unsigned int maxWTab 			= 600;	/* tab menu width */
+static const unsigned int maxHTab 			= 200;	/* tab menu height */
+
+
+
 /* appearance */
 static unsigned int borderpx = 3; /* border pixel of windows */
 static unsigned int snap = 32;	  /* snap pixel */
@@ -138,6 +148,10 @@ static const Key keys[] = {
 	TAGKEYS(XK_5, 4)
 	TAGKEYS(XK_6, 5)
 	TAGKEYS(XK_7, 6)
+
+
+	{ Mod1Mask,             		XK_Tab,    altTabStart,	   {1} },
+	{ Mod1Mask|ShiftMask,           XK_Tab,    altTabStart,	   {-1} },
 
 
 
