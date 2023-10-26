@@ -40,6 +40,21 @@ static char *colors[][3] = {
 	[SchemeSel] = {selfgcolor, selbgcolor, selbordercolor},
 };
 
+static const char *const autostart[] = {
+	"brave-nightly", NULL,
+	"nm-applet", NULL,
+	"blueman-applet", NULL,
+	"jamesdsp","-t", NULL,
+    "sxhkd", NULL,
+    "thunar","--daemon ", NULL,
+    "dunst", NULL,
+    "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
+    "xbindkeys", NULL,
+    "dbus-update-activation-environment","--systemd","DBUS_SESSION_BUS_ADDRESS","DISPLAY XAUTHORITY", NULL,
+    "picom" , NULL,
+    NULL /* terminate */
+};
+
 typedef struct
 {
 	const char *name;
