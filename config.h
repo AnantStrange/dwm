@@ -64,12 +64,14 @@ const char *spcmd1[] = {"tabbed", "-g", "1000x700", "-cr", "2", "-n", "spterm", 
 const char *spcmd2[] = {"st","-g","120x30","-n","spaudio","-e","pavucontrol", NULL};
 const char *spcmd3[] = {"st","-g","150x40","-n","sptorrent","-e","transmission-remote-gtk", NULL};
 const char *spcmd4[] = {"st","-g","150x40","-n","spfile","-e","ranger","/home/anant", NULL};
+const char *spcmd5[] = {"st","-g","150x40","-n","sptmux","-e","tmux", NULL};
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm", spcmd1},
 	{"spaudio",spcmd2},
 	{"sptorrent",spcmd3},
 	{"spfile",spcmd4},
+	{"sptmux",spcmd5},
 };
 
 /* tagging */
@@ -85,6 +87,7 @@ static const Rule rules[] = {
 	{NULL, "spaudio", NULL, SPTAG(1), 1, 1, 0, -1},
 	{NULL, "sptorrent", NULL, SPTAG(2), 1, 1, 0, -1},
 	{NULL, "spfile", NULL, SPTAG(3), 1, 1, 0, -1},
+	{NULL, "sptmux", NULL, SPTAG(4), 1, 0, 1, -1},
 };
 
 /* layout(s) */
@@ -209,6 +212,7 @@ static const Key keys[] = {
 	{MODKEY, XK_a, togglescratch, {.ui = 1}},
 	{ControlMask, XK_t, togglescratch, {.ui = 2}},
 	{Mod1Mask, XK_f, togglescratch, {.ui = 3}},
+	{Mod1Mask, XK_space, togglescratch, {.ui = 4}},
 
 	{MODKEY, XK_b, togglebar, {0}},
 	{MODKEY, XK_Return, zoom, {0}},
