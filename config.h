@@ -200,7 +200,8 @@ static const Key keys[] = {
 
 	{MODKEY, XK_p, spawn, {.v = (const char *[]){"dmenu_run", NULL}}},
         //{MODKEY|ShiftMask, XK_Return, spawn, {.v = (const char *[]){"st", NULL}}},
-	{MODKEY|ShiftMask, XK_Return, spawn, {.v = (const char *[]){"tabbed","-cr", "2", "st", "-w", "", NULL}}},
+	//{MODKEY|ShiftMask, XK_Return, spawn, {.v = (const char *[]){"tabbed","-cr", "2", "st", "-w", "", NULL}}},
+	{MODKEY|ShiftMask, XK_Return, spawn, {.v = (const char *[]){"st", NULL}}},
 
 	{MODKEY, XK_Tab, shiftview, {.i = 1}},
 	{MODKEY | ShiftMask, XK_Tab, shiftview, {.i = -1}},

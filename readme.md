@@ -21,8 +21,19 @@ Man page (`man dwm`/`dwm.1`) might not be fully updated.
 - [vanitygaps](https://dwm.suckless.org/patches/vanitygaps/): Gaps allowed across all layouts.
 - [swallow patch](https://dwm.suckless.org/patches/swallow/): if a program run from a terminal would make it inoperable, it temporarily takes its place to save space.
 - [dwm-alttab](https://dwm.suckless.org/patches/alt-tab/) : Use <kbd>ALt + Tab</kbd> to switch through windows in same tags 
-- [dwm-cool_autostart](https://changeme.com) : Add a cool way to auto start programs within the config.h
-- [dwm-systray](https://changeme.com) : Adds a systray to end of dwm bar.
+- [dwm-cool_autostart](https://dwm.suckless.org/patches/cool_autostart/) : Add a cool way to auto start programs within the config.h
+- [dwm-systray](https://dwm.suckless.org/patches/systray/) : Adds a systray to end of dwm bar.
+
+## ScreenShots
+<details>
+<summary>Expand</summary>
+
+![Screenshot_1_tile.jpg](./screenshots/Screenshot_1_tile.jpg "Tile Layout")
+![Screenshot_1_tile.jpg](./screenshots/Screenshot_2_floating.jpg "Floating Layout")
+![Screenshot_1_tile.jpg](./screenshots/Screenshot_3_sptmux.jpg "Sptmux Scratchpad")
+
+</details>
+
 
 ## Installation for newbs
 
@@ -61,6 +72,7 @@ Floating : <kbd>Mod4 + Shift+f</kbd><br>
 
 - [st](https://st.suckless.org/)
 - [dmenu](https://tools.suckless.org/dmenu/)
+- picom (Compositor)
 - [Tabbed](https://tools.suckless.org/tabbed/) (For Spterm Scratchpad)
 - Ranger (For Spfile Scratchpad)
 - Dunst (For Notifications)
