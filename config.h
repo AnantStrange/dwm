@@ -211,7 +211,7 @@ static const Key keys[] = {
 
 	{MODKEY, XK_space, togglescratch, {.ui = 0}},
 	{MODKEY, XK_a, togglescratch, {.ui = 1}},
-	{ControlMask, XK_t, togglescratch, {.ui = 2}},
+	{Mod1Mask, XK_t, togglescratch, {.ui = 2}},
 	{Mod1Mask, XK_f, togglescratch, {.ui = 3}},
 	{Mod1Mask, XK_space, togglescratch, {.ui = 4}},
 
@@ -245,10 +245,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Up,     moveresize,     {.v = "0x -25y 0w 0h" } },
 	{ MODKEY,                       XK_Right,  moveresize,     {.v = "25x 0y 0w 0h" } },
 	{ MODKEY,                       XK_Left,   moveresize,     {.v = "-25x 0y 0w 0h" } },
-	{ MODKEY|ShiftMask,             XK_Down,   moveresize,     {.v = "0x 0y 0w 25h" } },
+
+	{ MODKEY|ShiftMask,             XK_Down,   moveresize,     {.v = "0x 0y 0w +25h" } },
 	{ MODKEY|ShiftMask,             XK_Up,     moveresize,     {.v = "0x 0y 0w -25h" } },
 	{ MODKEY|ShiftMask,             XK_Right,  moveresize,     {.v = "0x 0y 25w 0h" } },
 	{ MODKEY|ShiftMask,             XK_Left,   moveresize,     {.v = "0x 0y -25w 0h" } },
+
 	{ MODKEY|ControlMask,           XK_Up,     moveresizeedge, {.v = "t"} },
 	{ MODKEY|ControlMask,           XK_Down,   moveresizeedge, {.v = "b"} },
 	{ MODKEY|ControlMask,           XK_Left,   moveresizeedge, {.v = "l"} },
