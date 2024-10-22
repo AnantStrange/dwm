@@ -41,10 +41,10 @@ static char *colors[][3] = {
 };
 
 static const char *const autostart[] = {
-	"brave-nightly", NULL,
-	"nm-applet", NULL,
-	"blueman-applet", NULL,
-	"jamesdsp","-t", NULL,
+	"sh","-c","if ! pgrep -x brave > /dev/null  ; then $BROWSER; fi", NULL,
+	/* "nm-applet", NULL, */
+	/* "blueman-applet", NULL, */
+	/* "jamesdsp","-t", NULL, */
     "sxhkd", NULL,
     "thunar","--daemon ", NULL,
     "dunst", NULL,
@@ -60,7 +60,7 @@ typedef struct
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"tabbed", "-g", "1000x700", "-cr", "2", "-n", "spterm", "st", "-w", "", NULL};
+const char *spcmd1[] = {"tabbed", "-g", "1000x700", "-cr", "2", "-n", "spterm", "st", "-w", "", "-e", "python", NULL};
 const char *spcmd2[] = {"st","-g","120x30","-n","spaudio","-e","pavucontrol", NULL};
 const char *spcmd3[] = {"st","-g","150x40","-n","sptorrent","-e","transmission-remote-gtk", NULL};
 const char *spcmd4[] = {"st","-g","150x40","-n","spfile","-e","ranger","/home/anant", NULL};
@@ -82,9 +82,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class    instance      title       	 tags mask    isfloating   isterminal  noswallow  monitor */
+	/* class    instance      title       	 tags-mask    isfloating   isterminal  noswallow  monitor */
 	{NULL, "spterm", NULL, SPTAG(0), 1, 0, 1, -1},
-	{NULL, "spaudio", NULL, SPTAG(1), 1, 1, 0, -1},
+    {NULL, "spaudio", NULL, SPTAG(1), 1, 1, 1, -1},
 	{NULL, "sptorrent", NULL, SPTAG(2), 1, 1, 0, -1},
 	{NULL, "spfile", NULL, SPTAG(3), 1, 1, 0, -1},
 	{NULL, "sptmux", NULL, SPTAG(4), 1, 0, 1, -1},
@@ -93,7 +93,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static float mfact = 0.55;			 /* factor of master area size [0.05..0.95] */
 static int nmaster = 1;				 /* number of clients in master area */
-static int resizehints = 0;			 /* 1 means respect size hints in tiled resizals */
+static int resizehints = 1;			 /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 #define FORCE_VSPLIT 1				 /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
